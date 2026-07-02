@@ -44,23 +44,47 @@ fi
 echo "$(date '+%Y-%m-%d %H:%M:%S') - 开始构建固件..."
 
 # ============= imm仓库内的插件==============
-# 定义所需安装的包列表 下列插件你都可以自行删减
+# 定义所需安装的包列表，已集成跨境电商及长期运维所需工具
 PACKAGES=""
+
+# --- 基础系统与管理 ---
 PACKAGES="$PACKAGES curl"
-PACKAGES="$PACKAGES luci-i18n-diskman-zh-cn"
-PACKAGES="$PACKAGES luci-i18n-firewall-zh-cn"
-PACKAGES="$PACKAGES luci-theme-argon"
+PACKAGES="$PACKAGES htop"                         # 终端图形化任务管理器
+PACKAGES="$PACKAGES screen"                       # 终端会话恢复工具
+PACKAGES="$PACKAGES openssh-sftp-server"          # 支持 SFTP 文件上传下载
+PACKAGES="$PACKAGES luci-i18n-package-manager-zh-cn"
+PACKAGES="$PACKAGES luci-i18n-ttyd-zh-cn"         # 网页终端，远程修复必备
+PACKAGES="$PACKAGES luci-i18n-filemanager-zh-cn"  # 网页端文件管理
+PACKAGES="$PACKAGES luci-i18n-diskman-zh-cn"      # 磁盘挂载/管理
+
+# --- 主题与界面 ---
+PACKAGES="$PACKAGES luci-theme-argon"             # 经典主题
 PACKAGES="$PACKAGES luci-app-argon-config"
 PACKAGES="$PACKAGES luci-i18n-argon-config-zh-cn"
-#25.12
-PACKAGES="$PACKAGES luci-i18n-package-manager-zh-cn"
-PACKAGES="$PACKAGES luci-i18n-ttyd-zh-cn"
-PACKAGES="$PACKAGES openssh-sftp-server"
 
-# 文件管理器
-PACKAGES="$PACKAGES luci-i18n-filemanager-zh-cn"
+# --- 跨境电商/网络核心 ---
+PACKAGES="$PACKAGES luci-app-openclash"           # 科学网络核心
+PACKAGES="$PACKAGES luci-app-ssr-plus"            # 备用方案
+PACKAGES="$PACKAGES luci-app-adguardhome"         # 去广告与 DNS 管理
+PACKAGES="$PACKAGES luci-app-upnp"                # 动态端口映射
+PACKAGES="$PACKAGES kmod-usb-net-ipheth"          # iPhone 网络共享支持
+
+# --- 网络监控与诊断 ---
+PACKAGES="$PACKAGES luci-i18n-firewall-zh-cn"
+PACKAGES="$PACKAGES luci-app-diag-core"           # 网络诊断工具
+PACKAGES="$PACKAGES luci-app-statistics"          # 流量统计
+PACKAGES="$PACKAGES luci-app-vnstat"              # 精确流量计算
+PACKAGES="$PACKAGES luci-app-nlbwmon"             # 实时带宽监控
+PACKAGES="$PACKAGES luci-app-sqm"                 # 智能队列管理（防直播卡顿）
+PACKAGES="$PACKAGES luci-app-access-control"      # 访问控制
+PACKAGES="$PACKAGES luci-app-wifischedule"        # WiFi定时开关
+
+# --- 其他辅助 ---
+PACKAGES="$PACKAGES etherwake"                    # 网络唤醒
+PACKAGES="$PACKAGES luci-app-oled"                # OLED屏显示支持
+
 # ======== shell/apk-custom-packages.sh =======
-# 合并imm仓库以外的第三方插件 暂时注释
+# 合并imm仓库以外的第三方插件
 PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
 
 
