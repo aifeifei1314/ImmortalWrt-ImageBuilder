@@ -71,12 +71,9 @@ PACKAGES="$PACKAGES kmod-usb-net-ipheth"          # iPhone 网络共享支持
 
 # --- 网络监控与诊断 ---
 PACKAGES="$PACKAGES luci-i18n-firewall-zh-cn"
-PACKAGES="$PACKAGES luci-app-diag-core"           # 网络诊断工具
 PACKAGES="$PACKAGES luci-app-statistics"          # 流量统计
-PACKAGES="$PACKAGES luci-app-vnstat"              # 精确流量计算
 PACKAGES="$PACKAGES luci-app-nlbwmon"             # 实时带宽监控
 PACKAGES="$PACKAGES luci-app-sqm"                 # 智能队列管理（防直播卡顿）
-PACKAGES="$PACKAGES luci-app-access-control"      # 访问控制
 PACKAGES="$PACKAGES luci-app-wifischedule"        # WiFi定时开关
 
 # --- 其他辅助 ---
